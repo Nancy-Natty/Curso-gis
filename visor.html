@@ -139,6 +139,17 @@
 			map.addLayer(layerProyecto);
 			layerProyecto.setVisibility(false);
 
+            var layerPalmito = new OpenLayers.Layer.WMS(
+				"Mapa Sindicatos de Palmito",
+				host + ":8080/geoserver/wms",
+				{
+					layers: 'cursogis:palmito',
+					transparent: true
+				}
+			);
+			map.addLayer(layerPalmito);
+			layerPalmito.setVisibility(false);
+
 
 			// Layer WMS desde geoserver Local
 			var layerMuni = new OpenLayers.Layer.WMS(
