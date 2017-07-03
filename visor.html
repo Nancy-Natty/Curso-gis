@@ -82,6 +82,17 @@
 			layerDepartamentosWMS.setVisibility(false);
 			map.addLayer(layerDepartamentosWMS);
 
+			var nombreWMS = "Límites municipales";
+			var urlWMS = "http://geo.gob.bo/geoserver/wms";
+			var propiedadesWMS = {
+				layers: 'fondos:municipal',
+				transparent: true
+			};
+
+			var layermunicipiosWMS = new OpenLayers.Layer.WMS(nombreWMS, urlWMS, propiedadesWMS);
+			layermunicipiosWMS.setVisibility(false);
+			map.addLayer(layermunicipiosWMS);
+
 			// Layer WMS desde geoserver Local
 			var layerEolico = new OpenLayers.Layer.WMS(
 				"Mapa Eólico",
@@ -93,6 +104,19 @@
 			);
 			map.addLayer(layerEolico);
 			layerEolico.setVisibility(false);
+
+
+			// Layer WMS desde geoserver Local
+			var layerMuni = new OpenLayers.Layer.WMS(
+				"Limite Muni",
+				host + ":8080/geoserver/wms",
+				{
+					layers: 'cursogis:municipal',
+					transparent: true
+				}
+			);
+			map.addLayer(layerMuni);
+			layerMuni.setVisibility(false);
 
 			// Layer WMS mapa Eolico desde PostGIS
 			var layerEolicoPG = new OpenLayers.Layer.WMS(
