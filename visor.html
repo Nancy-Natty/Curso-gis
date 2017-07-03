@@ -84,7 +84,7 @@
 				"Mapa Eólico",
 				host + ":8080/geoserver/wms",
 				{
-					layers: 'cursoGIT:EOLICO',
+					layers: 'cursogis:EOLICO',
 					transparent: true
 				}
 			);
@@ -103,17 +103,6 @@
 			map.addLayer(layerEolicoPG);
 			layerEolicoPG.setVisibility(false);
 
-			// Capa Presas 2010  
-			var layerPresas = new OpenLayers.Layer.WMS(
-				"Mapa de Represas",
-				host + ":8080/geoserver/wms",
-				{
-					layers: 'curso-gis:Presas2010',
-					transparent: true
-				}
-			);
-			map.addLayer(layerPresas);
-			layerPresas.setVisibility(false);
 
 			var layerJson = new OpenLayers.Layer.Vector(
 				"Capa Uyuni-json",
