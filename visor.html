@@ -127,6 +127,19 @@
 			layerEolico.setVisibility(false);
 
 
+
+			var layerProyecto = new OpenLayers.Layer.WMS(
+				"Mapa fonadal_proyectos2013",
+				host + ":8080/geoserver/wms",
+				{
+					layers: 'cursogis:fonadal_proyectos2013',
+					transparent: true
+				}
+			);
+			map.addLayer(layerProyecto);
+			layerProyecto.setVisibility(false);
+
+
 			// Layer WMS desde geoserver Local
 			var layerMuni = new OpenLayers.Layer.WMS(
 				"Limite Muni",
@@ -152,7 +165,20 @@
 			layerEolicoPG.setVisibility(false);
 
 
-			/*var layerJson = new OpenLayers.Layer.Vector(
+			// Layer WMS mapa Eolico desde PostGIS
+			/*var layerProyectoPG = new OpenLayers.Layer.WMS(
+				"Mapa fonadal_proyectos2013 PostGIS",
+				host + ":8080/geoserver/wms",
+				{
+					layers: 'cursogis:tbl_eolico',
+					transparent: true
+				}
+			);
+			map.addLayer(layerEolicoPG);
+			layerEolicoPG.setVisibility(false);
+
+
+			var layerJson = new OpenLayers.Layer.Vector(
 				"Capa Uyuni-json",
 				{
 					projection: new OpenLayers.Projection("EPSG:4326"),
