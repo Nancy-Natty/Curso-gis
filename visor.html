@@ -151,6 +151,18 @@
 			layerPalmito.setVisibility(false);
 
 
+            var layerBanano = new OpenLayers.Layer.WMS(
+				"Mapa Sindicatos de Banano",
+				host + ":8080/geoserver/wms",
+				{
+					layers: 'cursogis:banano',
+					transparent: true
+				}
+			);
+			map.addLayer(layerBanano);
+			layerBanano.setVisibility(false);
+
+
 			// Layer WMS desde geoserver Local
 			var layerMuni = new OpenLayers.Layer.WMS(
 				"Limite Muni",
@@ -176,34 +188,7 @@
 			layerEolicoPG.setVisibility(false);
 
 
-			// Layer WMS mapa Eolico desde PostGIS
-			/*var layerProyectoPG = new OpenLayers.Layer.WMS(
-				"Mapa fonadal_proyectos2013 PostGIS",
-				host + ":8080/geoserver/wms",
-				{
-					layers: 'cursogis:tbl_eolico',
-					transparent: true
-				}
-			);
-			map.addLayer(layerEolicoPG);
-			layerEolicoPG.setVisibility(false);
-
-
-			var layerJson = new OpenLayers.Layer.Vector(
-				"Capa Uyuni-json",
-				{
-					projection: new OpenLayers.Projection("EPSG:4326"),
-					strategies: [new OpenLayers.Strategy.Fixed()],
-
-					protocol: new OpenLayers.Protocol.HTTP({
-						url: './salar_uyuni.json',
-						format: new OpenLayers.Format.GeoJSON()
-					})
-				}
-			);
-			map.addLayer(layerJson);
-			layerJson.setVisibility(false);
-*/
+			
 			var	controlInfo = new OpenLayers.Control.WMSGetFeatureInfo({
 				queryVisible: true,
 				eventListeners: {
@@ -243,10 +228,13 @@
 		window.onload = init;
 	</script>
 </head>
-<body>
+<body background="#FFFF00">
+
 	<div class="cabecera">
-		<h2>Visor Mapas</h2>
+		<h2 align="center">MAPAS LOCALIZACION DE SINDICATOS PRODUCTORES DE BOLIVIA</h2>
+
 	</div>
+
 	<div id="mapa"></div>
 
 	<div id="informacion"></div>
@@ -257,6 +245,7 @@
     Seleccione los archivos a subir:
     <input type="file" name="myFile[]" multiple id="myFile">
     <input type="submit" value="Upload File" name="submit">
+
 </form>
 </body>
 </html>
